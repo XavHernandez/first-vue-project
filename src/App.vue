@@ -1,8 +1,14 @@
 <template>
   <h1>{{ title }}</h1>
+  <br>
   <input type="text" ref="name">
+  <br>
   <button v-on:click="handleClick">Click Me</button>
-  <Modal />
+  <br>
+  <div v-if="showModal">
+    <Modal :header="header" :text="text" :theme="theme" @closeModal="handleShowModal"/>
+  </div>
+  <button @click="handleShowModal">Show Modal</button>
 </template>
 
 <script>
@@ -13,7 +19,11 @@ export default {
   components: { Modal },
   data () {
     return {
-      title: 'My first Vue.JS App :)'
+      title: 'My first Vue.JS App :)',
+      header: 'Sign-Up for a Vue Bootcamp',
+      text: 'Another line of text.',
+      theme: 'sale',
+      showModal: false
     }
   },
   methods: {
@@ -21,24 +31,10 @@ export default {
       console.log(this.$refs.name)
       this.$refs.name.classList.toggle("active")
       this.$refs.name.focus()
+    },
+    handleShowModal () {
+      this.showModal = !this.showModal
     }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1 {
-  border-bottom: 1px solid #ddd;
-  display: inline-block;
-  padding-bottom: 10px;
-}
-</style>

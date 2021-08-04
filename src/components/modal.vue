@@ -1,11 +1,23 @@
 <template>
-  <div class="backdrop">
-    <div class="modal">
-      <h1>Modal Title</h1>
-      <p>Exemple for Modal Content</p>
+  <div class="backdrop" @click="handleShowModal">
+    <div class="modal" :class="{sale: theme === 'sale'}">
+      <h1>{{ header }}</h1>
+      <p>{{ text }}</p>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: ["header", "text", "theme"],
+  methods: {
+    handleShowModal() {
+      this.$emit('closeModal')
+    }
+  }
+}
+</script>
+
 
 <style>
   .modal{
@@ -26,5 +38,9 @@
 
   h1{
     color: red;
+  }
+
+  .sale{
+    color: green;
   }
 </style>
