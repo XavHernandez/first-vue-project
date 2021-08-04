@@ -6,7 +6,10 @@
   <button v-on:click="handleClick">Click Me</button>
   <br>
   <div v-if="showModal">
-    <Modal :header="header" :text="text" :theme="theme" @closeModal="handleShowModal"/>
+    <Modal :header="header" :text="text" :theme="theme" @closeModal="handleShowModal">
+      <h1>Slot Rendering</h1>
+      <p>Slot one</p>
+    </Modal>
   </div>
   <button @click="handleShowModal">Show Modal</button>
 </template>
@@ -22,7 +25,7 @@ export default {
       title: 'My first Vue.JS App :)',
       header: 'Sign-Up for a Vue Bootcamp',
       text: 'Another line of text.',
-      theme: 'sale',
+      theme: 'xxx',
       showModal: false
     }
   },

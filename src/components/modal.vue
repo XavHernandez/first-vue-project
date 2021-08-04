@@ -1,8 +1,7 @@
 <template>
-  <div class="backdrop" @click="handleShowModal">
+  <div class="backdrop" @click.self="handleShowModal">
     <div class="modal" :class="{sale: theme === 'sale'}">
-      <h1>{{ header }}</h1>
-      <p>{{ text }}</p>
+      <slot></slot>
     </div>
   </div>
 </template>
